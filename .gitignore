@@ -7,3 +7,17 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 *.log
+
+# Build artifacts (compiled from .ts)
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+
+# Lint cache
+.eslintcache
+
+# Electron 打包产物（1.6GB 安装器 + win-unpacked，通过 GitHub Release 分发）
+release/
+
+# 开发过程审计截图（448MB，非项目资源）
+.audit/

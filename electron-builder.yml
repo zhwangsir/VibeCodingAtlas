@@ -1,0 +1,56 @@
+appId: com.vibecoding.atlas
+productName: Vibe Coding Atlas
+copyright: Copyright © 2026 Vibe Coding Atlas
+icon: build/icon.png
+
+# 禁用 asar — 视频文件需在 resources/app/ 目录下以供 NSIS preCompressed 机制包含
+asar: false
+
+# 打包包含的文件
+files:
+  - dist/**/*
+  - electron/**/*
+  - package.json
+
+# Windows 配置
+win:
+  icon: build/icon.png
+  target:
+    - target: nsis
+      arch:
+        - x64
+  artifactName: VibeCodingAtlas-Setup-${version}.${ext}
+
+# NSIS 安装器配置
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  allowElevation: true
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  installerHeaderIcon: build/icon.ico
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Vibe Coding Atlas
+  deleteAppDataOnUninstall: false
+  displayLanguageSelector: false
+  language: 2052 # 简体中文
+
+# macOS 配置（顺带支持）
+mac:
+  icon: build/icon.png
+  target:
+    - target: dmg
+      arch:
+        - arm64
+  category: public.app-category.graphics-design
+  artifactName: VibeCodingAtlas-${version}.${ext}
+
+# 目录配置
+directories:
+  buildResources: build
+  output: release
+
+# 压缩
+compression: maximum

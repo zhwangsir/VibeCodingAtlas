@@ -16,7 +16,7 @@ export default function App() {
   }, [onIndex, navigate])
 
   return (
-    <div className="relative">
+    <div className="relative h-full w-full">
       <Outlet />
       {/* Subtle back-to-index indicator — hidden on the index itself */}
       {!onIndex && (
