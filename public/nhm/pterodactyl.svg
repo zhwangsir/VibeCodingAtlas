@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 600" width="1100" height="600">
+  <defs>
+    <radialGradient id="ptero-bg" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1a1a2e" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ptero-body" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="50%" stop-color="#e5e5e5"/>
+      <stop offset="100%" stop-color="#2a2a2a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1100" height="600" fill="url(#ptero-bg)"/>
+  <g fill="url(#ptero-body)" opacity="0.92">
+    <path d="M180 320 Q200 290 240 280 Q290 270 340 278 Q390 286 430 300 Q470 314 500 330 Q525 342 545 350 L560 355 L575 352 L590 346 L605 338 L620 328 L635 316 L650 302 L665 288 L680 276 L695 268 L710 264 L725 266 L740 274 L755 286 L770 300 L785 314 L800 328 L815 340 L830 350 L845 358 L860 364 L875 368 L890 370 L905 370 L920 368 L935 364 L950 358 L965 350 L980 340 L990 328 L995 314 L993 300 L985 288 L970 280 L950 278 L930 282 L910 290 L890 300 L870 310 L850 316 L830 318 L810 316 L790 310 L770 302 L750 292 L730 282 L710 274 L690 268 L670 266 L650 268 L630 274 L610 282 L590 290 L570 294 L555 292 L540 284 L520 272 L495 258 L465 244 L430 232 L390 224 L345 220 L300 222 L260 230 L225 244 L200 264 L188 288 Z"/>
+    <path d="M540 355 L545 370 L550 385 L555 400 L560 415 L565 428 L570 438 L575 442 L580 438 L583 428 L585 415 L585 400 L583 385 L580 370 L575 358 Z"/>
+    <path d="M180 320 L175 330 L172 342 L170 355 L168 368 L170 380 L175 385 L180 380 L183 368 L185 355 L185 342 L183 330 Z"/>
+  </g>
+  <g fill="#e5e5e5" opacity="0.6">
+    <path d="M545 342 Q560 338 575 342 Q590 346 600 352 L590 356 Q575 352 560 350 Z"/>
+  </g>
+  <g fill="#666" opacity="0.35">
+    <circle cx="250" cy="120" r="1.5"/>
+    <circle cx="450" cy="80" r="2"/>
+    <circle cx="700" cy="140" r="1.5"/>
+    <circle cx="850" cy="100" r="2"/>
+    <circle cx="950" cy="180" r="1.5"/>
+    <circle cx="350" cy="500" r="1.5"/>
+    <circle cx="650" cy="520" r="2"/>
+    <circle cx="880" cy="480" r="1.5"/>
+  </g>
+  <text x="550" y="570" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#888" letter-spacing="4">PTERODACTYL · ANCIENT COLLECTION</text>
+</svg>

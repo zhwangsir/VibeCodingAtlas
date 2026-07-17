@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg2)"/>
+  <g fill="#e5e5e5" opacity="0.85">
+    <path d="M200 80 Q240 80 270 120 Q290 160 290 200 Q290 240 270 280 Q240 320 200 320 Q160 320 130 280 Q110 240 110 200 Q110 160 130 120 Q160 80 200 80 Z" opacity="0.15"/>
+    <path d="M200 100 Q235 100 260 135 Q275 170 275 200 Q275 230 260 265 Q235 300 200 300 Q165 300 140 265 Q125 230 125 200 Q125 170 140 135 Q165 100 200 100 Z" opacity="0.2"/>
+    <path d="M200 120 Q225 120 245 150 Q255 180 255 200 Q255 220 245 250 Q225 280 200 280 Q175 280 155 250 Q145 220 145 200 Q145 180 155 150 Q175 120 200 120 Z" opacity="0.25"/>
+    <path d="M200 140 Q215 140 228 165 Q234 185 234 200 Q234 215 228 235 Q215 260 200 260 Q185 260 172 235 Q166 215 166 200 Q166 185 172 165 Q185 140 200 140 Z" opacity="0.3"/>
+    <g transform="translate(200,200)">
+      <path d="M0 -50 Q20 -50 30 -30 Q35 -10 35 0 Q35 10 30 30 Q20 50 0 50 Q-20 50 -30 30 Q-35 10 -35 0 Q-35 -10 -30 -30 Q-20 -50 0 -50 Z" fill="#e5e5e5" opacity="0.9"/>
+      <path d="M0 -40 Q15 -40 22 -25 Q26 -8 26 0 Q26 8 22 25 Q15 40 0 40 Q-15 40 -22 25 Q-26 8 -26 0 Q-26 -8 -22 -25 Q-15 -40 0 -40 Z" fill="#0a0a0a" opacity="0.4"/>
+      <path d="M0 -30 Q10 -30 16 -18 Q20 -6 20 0 Q20 6 16 18 Q10 30 0 30 Q-10 30 -16 18 Q-20 6 -20 0 Q-20 -6 -16 -18 Q-10 -30 0 -30 Z" fill="#e5e5e5" opacity="0.7"/>
+      <path d="M0 -18 Q6 -18 10 -10 Q12 -3 12 0 Q12 3 10 10 Q6 18 0 18 Q-6 18 -10 10 Q-12 3 -12 0 Q-12 -3 -10 -10 Q-6 -18 0 -18 Z" fill="#0a0a0a" opacity="0.3"/>
+    </g>
+    <path d="M200 150 Q200 180 200 200 Q200 220 200 250" stroke="#e5e5e5" stroke-width="1" fill="none" opacity="0.4"/>
+    <path d="M170 170 Q190 175 200 180" stroke="#e5e5e5" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <path d="M230 170 Q210 175 200 180" stroke="#e5e5e5" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <path d="M170 230 Q190 225 200 220" stroke="#e5e5e5" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <path d="M230 230 Q210 225 200 220" stroke="#e5e5e5" stroke-width="0.8" fill="none" opacity="0.3"/>
+  </g>
+  <text x="200" y="375" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#888" letter-spacing="3">02 · FOSSILS OF ANCIENT LIFE</text>
+</svg>

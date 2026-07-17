@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bg3" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg3)"/>
+  <g fill="#e5e5e5" opacity="0.88">
+    <path d="M100 320 Q105 280 130 260 Q155 245 180 235 Q200 228 210 215 Q218 205 220 190 Q222 178 230 172 Q238 168 242 162 L246 155 L252 152 L256 156 L254 164 L250 168 L254 174 L260 176 L266 174 L270 170 L274 174 L272 182 L266 186 L262 190 L264 196 L270 198 L274 202 L272 210 L266 212 L258 210 L250 206 L244 208 L238 214 L232 222 L230 232 L234 242 L242 246 L250 244 L256 240 L260 244 L256 252 L248 256 L236 260 L222 264 L206 270 L188 280 L170 290 L152 300 L132 308 L112 312 L98 310 L88 306 Z"/>
+    <path d="M244 160 L250 152 L256 150 L260 154 L258 160 L252 162 Z"/>
+    <circle cx="252" cy="156" r="2" fill="#0a0a0a"/>
+    <path d="M180 240 Q200 245 210 250" stroke="#e5e5e5" stroke-width="1" fill="none" opacity="0.4"/>
+    <path d="M140 280 Q160 285 170 290" stroke="#e5e5e5" stroke-width="1" fill="none" opacity="0.3"/>
+    <path d="M220 190 L240 195 L236 205 L216 200 Z" opacity="0.5"/>
+    <g opacity="0.3" fill="#888">
+      <path d="M120 100 L140 90 L135 100 L125 105 Z"/>
+      <path d="M280 280 L300 270 L295 280 L285 285 Z"/>
+    </g>
+  </g>
+  <g fill="#666" opacity="0.25">
+    <circle cx="80" cy="120" r="2"/>
+    <circle cx="330" cy="80" r="1.5"/>
+    <circle cx="350" cy="220" r="2"/>
+  </g>
+  <text x="200" y="375" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#888" letter-spacing="3">03 · REPTILES OF THE MESOZOIC</text>
+</svg>

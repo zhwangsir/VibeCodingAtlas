@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bg5" cx="50%" cy="40%" r="75%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg5)"/>
+  <g fill="#e5e5e5" opacity="0.9">
+    <path d="M60 310 Q70 260 110 240 Q145 225 180 215 Q205 208 220 190 Q232 178 238 160 Q242 145 252 138 Q262 132 268 125 L276 118 L286 116 L292 122 L288 132 L282 138 L288 146 L296 148 L306 145 L314 142 L320 148 L316 158 L306 164 L300 170 L304 178 L312 182 L320 186 L316 196 L308 200 L296 196 L284 192 L274 194 L264 200 L254 210 L248 222 L252 234 L262 240 L272 238 L280 234 L286 240 L280 250 L268 256 L252 260 L234 266 L214 274 L194 284 L172 294 L148 302 L124 308 L100 310 L78 308 L66 304 Z"/>
+    <path d="M272 125 L280 118 L288 116 L294 120 L292 128 L284 130 Z"/>
+    <circle cx="284" cy="122" r="2.5" fill="#0a0a0a"/>
+    <path d="M238 160 L260 168 L255 180 L233 172 Z" opacity="0.6"/>
+    <path d="M210 195 L235 200 L230 212 L205 207 Z" opacity="0.5"/>
+    <path d="M175 220 L200 225 L195 237 L170 232 Z" opacity="0.4"/>
+    <path d="M140 250 L165 255 L160 267 L135 262 Z" opacity="0.35"/>
+    <g opacity="0.3" fill="#888">
+      <path d="M340 80 L355 75 L350 85 L345 88 Z"/>
+      <path d="M50 100 L65 95 L60 105 L55 108 Z"/>
+      <path d="M360 250 L375 245 L370 255 L365 258 Z"/>
+    </g>
+  </g>
+  <g fill="#666" opacity="0.2">
+    <circle cx="90" cy="60" r="1.5"/>
+    <circle cx="330" cy="50" r="2"/>
+    <circle cx="370" cy="180" r="1.5"/>
+    <circle cx="40" cy="160" r="1.5"/>
+  </g>
+  <text x="200" y="375" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#888" letter-spacing="3">05 · PREHISTORIC GIANTS</text>
+</svg>

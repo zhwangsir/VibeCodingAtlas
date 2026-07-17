@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bg1" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg1)"/>
+  <g fill="#e5e5e5" opacity="0.9">
+    <path d="M50 290 Q60 230 100 210 Q130 198 165 188 Q190 180 205 165 Q215 155 220 140 Q222 128 232 122 Q244 116 250 110 L258 105 L268 103 L275 108 L272 118 L266 124 L272 132 L280 135 L290 132 L298 128 L305 134 L302 144 L292 150 L286 156 L290 166 L298 170 L305 176 L302 186 L292 190 L280 186 L268 182 L258 184 L248 190 L238 198 L232 210 L238 222 L250 226 L260 224 L268 220 L274 226 L266 236 L254 240 L238 244 L222 250 L206 260 L190 272 L174 284 L158 292 L138 298 L116 298 L94 294 L74 288 L58 284 Z"/>
+    <path d="M248 115 L254 108 L262 106 L270 110 L266 118 L258 120 Z"/>
+    <circle cx="260" cy="112" r="2.5" fill="#0a0a0a"/>
+    <path d="M220 140 L240 150 L235 160 L215 155 Z" opacity="0.6"/>
+    <path d="M180 200 L210 205 L205 215 L175 210 Z" opacity="0.5"/>
+    <path d="M140 260 L170 265 L165 275 L135 270 Z" opacity="0.4"/>
+  </g>
+  <g fill="#666" opacity="0.3">
+    <circle cx="80" cy="80" r="2"/>
+    <circle cx="320" cy="60" r="1.5"/>
+    <circle cx="340" cy="180" r="2"/>
+    <circle cx="60" cy="200" r="1.5"/>
+    <circle cx="350" cy="320" r="2"/>
+  </g>
+  <text x="200" y="375" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#888" letter-spacing="3">01 · AGE OF DINOSAURS</text>
+</svg>

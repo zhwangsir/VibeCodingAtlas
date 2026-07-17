@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bg4" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0d1a2e"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+    <linearGradient id="wave4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a2a3a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg4)"/>
+  <rect width="400" height="200" fill="url(#wave4)"/>
+  <g fill="#e5e5e5" opacity="0.85">
+    <path d="M80 280 Q90 250 120 240 Q150 232 175 228 Q190 225 200 215 Q208 208 212 195 Q215 185 220 178 L224 172 L230 168 L236 170 L238 178 L234 184 L238 190 L246 192 L254 190 L260 186 L264 190 L262 198 L256 202 L252 206 L254 214 L260 216 L266 220 L264 228 L258 230 L250 228 L242 224 L236 226 L230 232 L226 240 L228 250 L234 256 L242 256 L248 252 L252 256 L248 264 L240 268 L228 272 L214 276 L198 280 L180 286 L160 294 L140 302 L118 308 L96 310 L80 306 L72 300 Z"/>
+    <path d="M224 175 L230 168 L236 166 L240 170 L238 176 L232 178 Z"/>
+    <circle cx="234" cy="172" r="2" fill="#0a0a0a"/>
+    <path d="M212 195 Q222 200 228 210" stroke="#e5e5e5" stroke-width="1" fill="none" opacity="0.4"/>
+    <path d="M180 228 Q200 232 215 240" stroke="#e5e5e5" stroke-width="1" fill="none" opacity="0.3"/>
+    <g opacity="0.4" fill="#7a9ab0">
+      <path d="M60 160 Q80 155 100 160 Q120 165 140 160 Q160 155 180 160 Q200 165 220 160 Q240 155 260 160 Q280 165 300 160 Q320 155 340 160 L340 165 Q320 170 300 165 Q280 160 260 165 Q240 170 220 165 Q200 160 180 165 Q160 170 140 165 Q120 160 100 165 Q80 170 60 165 Z"/>
+      <path d="M50 140 Q70 135 90 140 Q110 145 130 140 Q150 135 170 140 Q190 145 210 140 L210 145 Q190 150 170 145 Q150 140 130 145 Q110 150 90 145 Q70 140 50 145 Z" opacity="0.6"/>
+    </g>
+    <g opacity="0.3" fill="#5a7a8a">
+      <circle cx="120" cy="100" r="3"/>
+      <circle cx="280" cy="110" r="2"/>
+      <circle cx="350" cy="130" r="2.5"/>
+      <circle cx="80" cy="140" r="2"/>
+    </g>
+  </g>
+  <text x="200" y="375" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#888" letter-spacing="3">04 · MARINE FOSSIL GALLERY</text>
+</svg>
