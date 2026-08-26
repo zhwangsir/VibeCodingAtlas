@@ -1,3 +1,10 @@
+# DEVELOPMENT.md — test
+
+> 合并自旧 PROJECT_INIT / docs / 根目录散文档。原文在 `ALLProject/.archive/docs-legacy-20260827/`。
+> 最后更新：2026-08-27
+
+# 原 PROJECT_INIT
+
 # test · 项目初始化文档
 
 > 由项目管理中枢自动生成 | 更新日期: 2026-07-12 | 负责人: zhwangsir
@@ -266,3 +273,11 @@ type Showcase = {
 - **可作为 WineryBlog / LoveStar 的设计参考**：test 收录的 hero / landing 设计风格可被 WineryBlog 首页或 LoveStar 入口页借鉴。
 - **与 WeBrain 无直接关系**：WeBrain 前端用 Ant Design 5，与 test 的 Tailwind 风格不同；test 不涉及 AI / 后端。
 - **仓库虽私有但可公开**：test 不含敏感数据，如需公开分享设计可改为 public。
+
+
+## 已归档文档索引
+
+- `Gitee上传方法.md` — Gitee 上传方法（全项目统一）
+- `PROJECT_INIT.md` — test · 项目初始化文档
+- `PROJECT_SUMMARY.md` — Vibe Coding Atlas — 项目总结（收官版）
+- `设备说明.md` — 集群设备说明（单一真相源）

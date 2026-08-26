@@ -2,7 +2,7 @@
   "project": "frontend-showcase",
   "version": "0.1.0",
   "updated_at": "2026-07-18T04:30:00+08:00",
-  "current_milestone": "M10",
+  "current_milestone": "M11",
   "milestones": {
     "M5": {
       "title": "Showcase 页面修复与资源本地化（Group A/B/C/D）",
@@ -1387,6 +1387,61 @@
         "electron/preload.cjs (安全桥接)",
         "electron-builder.yml (打包配置)",
         "build/icon.png + build/icon.ico (应用图标)"
+      ]
+    },
+    "M11": {
+      "title": "黑屏修复（内嵌 HTTP 服务器）+ 仓库迁移 VibeCodingAtlas",
+      "status": "completed",
+      "description": "v1.0.0 安装后窗口全黑：protocol.interceptFileProtocol 回退逻辑 callback({url: request.url}) 将请求重定向到自身形成死循环，index.html 永远加载失败。修复：废弃拦截器，改用内嵌 HTTP 静态服务器（127.0.0.1 随机端口），支持 Range 请求（视频 seek）、SPA fallback、路径穿越防护。同时将仓库从 frontend-showcase 迁移至 zhwangsir/VibeCodingAtlas，版本号升至 1.0.1，发布 Release 修复版安装器。",
+      "subtasks": {
+        "M11.1": {
+          "slug": "black-screen-fix",
+          "title": "黑屏根因定位与内嵌 HTTP 服务器重构",
+          "status": "completed",
+          "issues": [
+            "v1.0.0 安装后窗口全黑（仅显示 backgroundColor #0a0a0a）",
+            "根因：protocol.interceptFileProtocol 回退 callback({url: request.url}) → 请求重定向到自身 → 拦截器死循环 → index.html 加载失败"
+          ],
+          "fixes": [
+            "electron/main.cjs 移除 protocol.interceptFileProtocol",
+            "新增 createStaticServer()：http.createServer 服务 dist/ 目录，监听 127.0.0.1 随机端口",
+            "支持 Range 请求（bytes 头解析，视频 seek 必需，206/416 状态码）",
+            "SPA fallback：无扩展名路径回退 index.html（HashRouter 双保险）",
+            "路径穿越防护：path.normalize 后必须仍在 distPath 内，否则 403",
+            "MIME 表覆盖 html/js/css/图片/视频/音频/字体/3D 模型",
+            "Cache-Control：html no-cache，带 hash 资源 immutable 长缓存",
+            "did-fail-load 兜底：加载失败强制 win.show() 显示错误而非静默黑屏"
+          ],
+          "verification": [
+            "mac --dir 生产模式实测：首屏 76 卡片正常渲染",
+            "#/lithos 子页面路由正常，0 console 错误",
+            "视频资源 /videos/xxx.mp4 通过 HTTP 服务器正确加载"
+          ]
+        },
+        "M11.2": {
+          "slug": "repo-migration",
+          "title": "仓库迁移 zhwangsir/VibeCodingAtlas + Release v1.0.1",
+          "status": "completed",
+          "issues": [
+            "原仓库 frontend-showcase 需迁移至新仓库 VibeCodingAtlas",
+            "GitHub HTTPS 推送 1.5GB 资源报 RPC 408 超时"
+          ],
+          "fixes": [
+            "git remote 指向 https://github.com/zhwangsir/VibeCodingAtlas.git",
+            "大文件分批推送策略：拆分 13 个小 commit（源码→小资源→viktor-oddy→jack→videos 分 8 批），每批 < 200MB",
+            "package.json version 1.0.0 → 1.0.1，重新打包 VibeCodingAtlas-Setup-1.0.1.exe",
+            "gh release create v1.0.1 + 上传 1.6GB 安装器资产"
+          ],
+          "verification": [
+            "gh release view v1.0.1 --repo zhwangsir/VibeCodingAtlas 确认发布",
+            "Release 资产 VibeCodingAtlas-Setup-1.0.1.exe 上传完成"
+          ]
+        }
+      },
+      "artifacts": [
+        "release/VibeCodingAtlas-Setup-1.0.1.exe (1.6GB 黑屏修复版安装器)",
+        "electron/main.cjs (内嵌 HTTP 服务器重构)",
+        "GitHub Release v1.0.1: https://github.com/zhwangsir/VibeCodingAtlas/releases/tag/v1.0.1"
       ]
     }
   }

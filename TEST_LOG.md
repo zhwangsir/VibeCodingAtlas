@@ -1,4 +1,157 @@
+# TEST_LOG.md — test
+
+- 2026-08-27 项目管家文档治理：根目录收敛为 5 件套。
+
 # TEST_LOG — frontend-showcase
+
+## 2026-07-18 M11 黑屏修复（内嵌 HTTP 服务器）+ 仓库迁移 VibeCodingAtlas
+
+### 背景
+
+v1.0.0 安装器分发测试后，用户反馈："安装完之后没有任何显示，窗口全是黑色"。同时用户要求将仓库迁移至 `https://github.com/zhwangsir/VibeCodingAtlas.git` 并发布修复版。
+
+### M11.1 黑屏根因定位与内嵌 HTTP 服务器重构
+
+**现象**：Windows 安装 v1.0.0 后启动应用，窗口全黑（仅显示 `backgroundColor: '#0a0a0a'`），无任何内容渲染。
+
+**根因**：`protocol.interceptFileProtocol` 的回退逻辑：
+
+```javascript
+protocol.interceptFileProtocol('file', (request, callback) => {
+  let pathname
+  try { pathname = new URL(request.url).pathname } catch {
+    callback({ url: request.url }); return  // ❌ 重定向到自身 → 死循环
+  }
+  // ...
+  callback({ url: request.url })  // ❌ 文件不存在时同样重定向到自身
+})
+```
+
+当请求的文件不在 `dist/` 映射范围内时，`callback({ url: request.url })` 将请求重定向到原始 URL，再次触发同一个拦截器，形成**无限死循环**。`index.html` 永远加载失败，渲染进程空白，仅余主进程窗口背景色。
+
+**修复**（[main.cjs](file:///Users/wangzhenyu/Desktop/ALLProject/test/electron/main.cjs)）：废弃 file:// 拦截器方案，改用 Electron 生产模式标准做法 —— **内嵌 HTTP 静态服务器**：
+
+```javascript
+function createStaticServer() {
+  return new Promise((resolve, reject) => {
+    const server = http.createServer((req, res) => {
+      let urlPath = decodeURIComponent(req.url.split('?')[0])
+      if (urlPath === '/') urlPath = '/index.html'
+
+      // 路径穿越防护
+      const filePath = path.join(distPath, path.normalize(urlPath))
+      if (!filePath.startsWith(distPath)) {
+        res.writeHead(403); res.end('Forbidden'); return
+      }
+
+      fs.stat(filePath, (err, stat) => {
+        if (err || !stat.isFile()) {
+          // SPA fallback：无扩展名路径回退 index.html
+          if (!path.extname(urlPath)) {
+            res.writeHead(200, { 'Content-Type': MIME['.html'] })
+            fs.createReadStream(path.join(distPath, 'index.html')).pipe(res)
+            return
+          }
+          res.writeHead(404); res.end('Not Found'); return
+        }
+
+        const total = stat.size
+        const range = req.headers.range
+        if (range) {
+          // Range 请求（视频 seek 必需）→ 206 Partial Content
+          const match = range.match(/bytes=(\d*)-(\d*)/)
+          const start = match[1] ? parseInt(match[1], 10) : 0
+          const end = match[2] ? Math.min(parseInt(match[2], 10), total - 1) : total - 1
+          if (start >= total || end < start) {
+            res.writeHead(416, { 'Content-Range': `bytes */${total}` }); res.end(); return
+          }
+          res.writeHead(206, {
+            'Content-Range': `bytes ${start}-${end}/${total}`,
+            'Accept-Ranges': 'bytes',
+            'Content-Length': end - start + 1,
+            'Content-Type': mime,
+          })
+          fs.createReadStream(filePath, { start, end }).pipe(res)
+          return
+        }
+
+        res.writeHead(200, {
+          'Content-Length': total,
+          'Content-Type': mime,
+          'Accept-Ranges': 'bytes',
+          'Cache-Control': ext === '.html' ? 'no-cache' : 'public, max-age=31536000, immutable',
+        })
+        fs.createReadStream(filePath).pipe(res)
+      })
+    })
+    // 端口 0 = 随机可用端口；127.0.0.1 = 仅本机回环，外部不可访问
+    server.listen(0, '127.0.0.1', () => resolve({ server, port: server.address().port }))
+  })
+}
+```
+
+窗口加载：
+
+```javascript
+win.loadURL(`http://127.0.0.1:${serverPort}/index.html`)
+
+// 加载失败兜底：强制显示窗口，不再静默黑屏
+win.webContents.on('did-fail-load', (_e, code, desc) => {
+  console.error(`[load failed] ${code}: ${desc}`)
+  win.show()
+})
+```
+
+**HTTP 服务器方案 vs file:// 拦截器对比**：
+
+| 维度 | file:// 拦截器 | 内嵌 HTTP 服务器 |
+|---|---|---|
+| 相对路径 `./assets/xxx` | 需手动映射 | 天然正确 |
+| 绝对路径 `/videos/xxx` | 需拦截重写 | 天然正确 |
+| 视频 Range seek | 不支持 | 原生支持（206） |
+| 死循环风险 | **存在**（回退重定向自身） | 不存在 |
+| 缓存策略 | 无 | Cache-Control 精细控制 |
+| 安全性 | webSecurity 需关闭 | 127.0.0.1 回环隔离 |
+
+**验证**（mac --dir 生产模式实测）：
+- 首屏 76 卡片正常渲染 ✅
+- `#/lithos` 子页面路由正常 ✅
+- console 错误：**0** ✅
+
+### M11.2 仓库迁移 + Release v1.0.1
+
+**GitHub 大文件推送 408 超时**：
+
+```
+error: RPC failed; HTTP 408 curl 22 The requested URL returned error: 408
+```
+
+**修复**：拆分大 commit 为 13 个小 commit，按批次推送（源码 → 小资源 → viktor-oddy → jack → videos 分 8 批），每批 < 200MB。
+
+**版本升级与重新打包**：
+
+```bash
+# package.json: version 1.0.0 → 1.0.1
+npm run dist:win
+# → release/VibeCodingAtlas-Setup-1.0.1.exe (1.6GB)
+```
+
+**Release 发布**：
+
+```bash
+gh release create v1.0.1 \
+  --repo zhwangsir/VibeCodingAtlas \
+  --title "Vibe Coding Atlas v1.0.1" \
+  --notes "..." \
+  release/VibeCodingAtlas-Setup-1.0.1.exe
+```
+
+Release 地址：https://github.com/zhwangsir/VibeCodingAtlas/releases/tag/v1.0.1
+
+### 状态文件
+- `STATE.json` 已更新里程碑 M11 / 子任务 M11.1~M11.2，current_milestone 推进至 M11
+
+---
 
 ## 2026-07-18 M10 Electron 桌面端打包 + Windows NSIS 安装器
 
